@@ -7,6 +7,9 @@
 
 /* Further changes by Medeopolis (C) 2024 */
 
+// Use CA settings directly
+require __DIR__ . '/setup.php';
+
 // *** Settings for sitemap ***
 
 // URL root for your public website (Pawtucket root) including index.php
