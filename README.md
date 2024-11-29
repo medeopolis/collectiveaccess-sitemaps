@@ -1,9 +1,13 @@
 # collectiveaccess-sitemaps
-PHP script generating a sitemap.xml file in Pawtucket's root.
-Extract informations directly from SQL database for Collections, Objects, Places, Occurrences, Entities.
 
-1. Edit the file to define parameters for SQL connection. You can copy/paste these lines from setup.php file.
-   Edit $absolute_path and $URL_root.
+PHP script for generating a sitemap.xml file in Pawtucket's root.
+
+In order to do this it extracts information for Collections, Objects, Places, Occurrences, Entities directly from the SQL database.
+
+1. Edit `sitemap.php`
+
+  - to define parameters for your SQL database connection. You can copy/paste these lines from setup.php file.
+  - then edit $absolute_path and $URL_root.
 
 2. Choose your settings for generating the sitemap.xml file. Read comments in the file.
 
