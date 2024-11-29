@@ -5,22 +5,15 @@
 // PHP script generating a sitemap.xml file in Pawtucket's root.
 // Extract informations directly from SQL database for Collections, Objects, Places, Occurrences, Entities.
 
+/* Further changes by Medeopolis (C) 2024 */
+
 // *** Settings for sitemap ***
 
-// Copy here parameters for SQL connection from the beginning of setup.php file
-define("__CA_DB_HOST__", '127.0.0.1');
-# __CA_DB_USER__ = Database login user name
-define("__CA_DB_USER__", 'YourDatabaseLogin');
-# __CA_DB_PASSWORD__ = Database login password
-define("__CA_DB_PASSWORD__", 'YourPassword');
-# __CA_DB_DATABASE__ = The name of your CollectiveAccess database
-define("__CA_DB_DATABASE__", 'YourDatabase');
-
-// Absolute path to the folder where the sitemap.xml file will be created (should be Pawtucket root)
-$absolute_path = "/var/www/collections/pub/";
-
 // URL root for your public website (Pawtucket root) including index.php
-$URL_root = "https://collections.univ-pau.fr/pub/index.php";
+$URL_root = __CA_URL_ROOT__ ;
+
+// TODO: Move settings to __CA_CONF_DIR__.'/sitemap.conf
+// requires a configuration parser here unless we import CA's
 
 // Settings for items:
 // - Changefreq_* is a string in {always;hourly;daily;weekly;monthly;yearly;never} (Google won't consider it)
@@ -307,9 +300,10 @@ $xml .=  "</urlset>";
 // *** End of generating xml file ***
 
 // *** Write xml file ***
-$file = fopen($absolute_path."sitemap.xml", "w");
+$file = fopen(__CA_BASE_DIR__."sitemap.xml", "w");
 fwrite($file,$xml);
 fclose($file);
+
 echo "\nTotal URLs in sitemap: $count\n";
 if ($count > 50000) echo "\nTotal number of URLs should not be > 50000.\n";
 echo "\nDate: ".date('Y-m-dTH:i:sP')."\n";
